@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Elios_Db_Vendor_Thetvdb_Series
+ */
+class Elios_Db_Vendor_Thetvdb_Series{
+	
+	/**
+	 * 
+	 * Enter description here ...
+	 * @var unknown_type
+	 */
+	public $_collection;
+	
+	/**
+	 * 
+	 * Return a collection of Elios_Db_Vendor_Thetvdb_Serie
+	 * @param string $name
+	 */
+	public function findByName($name,$lang){
+		//Construction de la requete
+		$query = new Elios_Db_Vendor_Thetvdb_QueryBuilder();
+		$query->select("Series");
+		$query->from("/api/GetSeries.php");
+		$query->where(array(
+						"seriesname" => $name,
+						"language" => $lang
+					));
+		$series = $query->execute();			
+		
+		foreach($series as $e){
+			$thetvdb_Serie = new Elios_Db_Vendor_Thetvdb_Serie($e);	
+			$this->_collection[] = $thetvdb_Serie;
+		}
+    	return $this->_collection;	
+	}
+	
+	/**
+	 * 
+	 * Enter description here ...
+	 * @param integer $thetvdb_id
+	 * @param lang $lang
+	 */
+	public function getSerie($thetvdb_id ,$lang = 'en'){
+		$serie = new Elios_Db_Vendor_Thetvdb_Serie();
+		$serie->language = $lang;
+		$serie->thetvdb_id = $thetvdb_id;
+		$serie->populate();
+		return $serie;
+	}
+}

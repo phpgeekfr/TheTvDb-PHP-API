@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * Elios_Db_Vendor_Thetvdb_Thetvdb
+ */
+class Elios_Db_Vendor_Thetvdb_Thetvdb {
+
+	/**
+	 * 
+	 * Enter description here ...
+	 */
+	public function getAvaliableMirror(){
+		$query = new Elios_Db_Vendor_Thetvdb_QueryBuilder();
+		return $query->getAvaliableMirror();
+	}
+	
+	/**
+	 * 
+	 * Enter description here ...
+	 */
+	public function getServerTime(){
+		$query = new Elios_Db_Vendor_Thetvdb_QueryBuilder();
+		$query->select("Time");
+		$query->from("/api/Updates.php?type=none");
+		$query->getQueryAsString();
+		foreach( $query->execute() as $t){
+			return  $t->nodeValue; 
+		}
+	}
+	
+	/**
+	 * 
+	 * Enter description here ...
+	 * @param unknown_type $type
+	 * @param unknown_type $lastupdate
+	 */
+	public function getUpdateList($lastupdate){
+		//Construction de la requete
+		$query = new Elios_Db_Vendor_Thetvdb_QueryBuilder();
+		$query->select("Items");
+		$query->from("/api/Updates.php");
+		$query->where(array(
+						"type" => "all",
+						"time" => $lastupdate
+					));
+		$items = $query->execute();	
+		$data = array();
+		$data['series'] = array();
+		$data['episodes']= array();
+		foreach($items as $e){
+			foreach ($e->childNodes as $node){	
+				switch ($node->nodeName) {
+					case "Time":
+						$data['time'] = $node->nodeValue;
+					break;
+					
+					case "Series":
+						$data['series'][] = trim($node->nodeValue);
+					break;
+					
+					case "Episode":
+						$data['episodes'][] = trim($node->nodeValue);
+					break;
+					
+					default:
+					break;
+				}
+			}
+		}
+		return $data;
+		
+	}
+}
