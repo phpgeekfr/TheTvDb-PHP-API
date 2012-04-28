@@ -6,7 +6,7 @@ This is a library to retreive series and episodes informations from http://thetv
 Thetvdb.com is an open database that contains a lot of informations about all series and episodes such as the featured date and overview.
  
 ####INFORMATIONS
-Open example.php to see how to use it.
+Open Elios/Service/Thetvdb/example.php to see how to use it.
 cache folder have to be writable. It is used to temporarily store zip files that are retreived from thetvdb api
 
 This library is not ended yet, banners and actors are not retreived.
