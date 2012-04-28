@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 TheTvDb-PHP-API
 ===============
 
 This is a library to retreive series and episodes informations from http://thetvdb.com/.
 
+=======
+TheTvDb-PHP-API-
+================
+
+This is a library to retreive series and episodes informations from http://thetvdb.com/.
+>>>>>>> 25e25dc092b3bd6b1f0730f07346d09ae0d31812
 Thetvdb.com is an open database that contains a lot of informations about all series and episodes such as the featured date and overview.
  
 ####INFORMATIONS
