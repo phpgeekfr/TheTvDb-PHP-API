@@ -46,8 +46,31 @@ foreach($series as $serie){
 $serie = $seriesT->getSerie("75897","en");
 echo $serie->nom.'<br/>';
 
+
 /*
- * We can now retrieve all the episodes
+ * Use $serie->getBanners() to get all banners for the serie.
+ * This method returns an array of Elios_Service_Thetvdb_Banner objects.
+ * Elios_Service_Thetvdb_Banner attributes:
+ * 	public $id;
+ *  public $BannerPath;
+ *  public $BannerType;
+ *  public $BannerType2;
+ *  public $Colors;
+ *  public $Language;
+ *  public $Rating;
+ *  public $RatingCount;
+ *  public $SeriesName;
+ *  public $ThumbnailPath;
+ *  public $VignettePath;
+ *  public $basePath = "http://thetvdb.com/banners/";
+ */
+
+$banners = $serie->getBanners();
+
+
+/*
+ * We can now retrieve all the episodes with $serie->getEpisodes()
+ * This method returns an array of Elios_Service_Thetvdb_Episode objects.
  * Elios_Service_Thetvdb_Episode attributes:
  * 
  * public $thetvdb_id;

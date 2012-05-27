@@ -66,7 +66,7 @@ class Elios_Service_Thetvdb_Episode{
 	public function getBaseInformation(){
 		$query = new Elios_Service_Thetvdb_QueryBuilder();
 		$query->select("Episode");
-		$query->from("/api/".Service_Thetvdb_QueryBuilder::APIKEY."/episodes/".$this->thetvdb_id."/".$this->language.".xml");
+		$query->from("/api/".Elios_Service_Thetvdb_QueryBuilder::APIKEY."/episodes/".$this->thetvdb_id."/".$this->language.".xml");
 		$episode = $query->execute();
 		foreach($episode as $ep){
 			$this->build($ep);
