@@ -2,6 +2,7 @@
 class Elios_Xml_Reader{
 	
 	protected $dom;
+	protected $test;
 	
 	/**
 	 * Create a new XmlDocument with given url
