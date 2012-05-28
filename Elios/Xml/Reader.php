@@ -1,7 +1,7 @@
 <?php
 class Elios_Xml_Reader{
 	
-	protected $dom;
+	protected $dom;  
 	
 	/**
 	 * Create a new XmlDocument with given url
