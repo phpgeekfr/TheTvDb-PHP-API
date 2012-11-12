@@ -74,6 +74,7 @@ $banners = $serie->getBanners();
  * Elios_Service_Thetvdb_Episode attributes:
  * 
  * public $thetvdb_id;
+ * public $imdb_id;
  * public $saison;
  * public $saison_id;
  * public $serie_id;

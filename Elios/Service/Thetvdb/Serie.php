@@ -99,6 +99,9 @@ class Elios_Service_Thetvdb_Serie{
 				case "Status":
 					$this->status = $node->nodeValue;
 				break;
+				case "Overview":
+					$this->overview = addslashes($node->nodeValue);
+				break;
 				default:
 				break;
 			}

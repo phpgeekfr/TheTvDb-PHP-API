@@ -14,6 +14,7 @@ class Elios_Service_Thetvdb_Episode{
 	public $lastupdated;
 	public $firstAired;
 	public $titre;
+	public $imdb_id;
 	
 	public function __construct($xmlData = null){
 		if($xmlData != null){		
@@ -24,6 +25,7 @@ class Elios_Service_Thetvdb_Episode{
 	public function build($xmlData = null){
 		if($xmlData != null){		
 			foreach ($xmlData->childNodes as $node){
+				//echo $node->nodeName.': '.$node->nodeValue;
 				switch ($node->nodeName) {
 					case "id":
 						$this->thetvdb_id = trim($node->nodeValue);
@@ -52,6 +54,9 @@ class Elios_Service_Thetvdb_Episode{
 					break;
 					case "seriesid":
 						$this->serie_id = $node->nodeValue;
+					break;
+					case "IMDB_ID":
+						$this->imdb_id = $node->nodeValue;
 					break;
 					case "EpisodeName":
 						$this->titre = $node->nodeValue;
