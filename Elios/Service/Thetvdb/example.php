@@ -90,13 +90,23 @@ $episodes = $serie->getEpisodes();
 
 /*
  * Use this function to get a list of updated items since your last update
+ * WARNING: this method is deprecated, please use updateRecords method
  */
-$data = $tvdb->getUpdateList($time);
+//$data = $tvdb->getUpdateList($time);
+//print_r($data);
+
+/*
+ * Use this function to get a list of updated items for the specified timeFrame.
+ * This method return array of updated episodes,shows and banners.
+ */
+$timeFrame = 'day';
+$data = $tvdb->updateRecords($timeFrame);
 print_r($data);
+
 
 /*
  * for each items of the $data array:
- * use $episodeT->getEpisode('ID') && $seriesT->getSerie("ID","LANG") to retreive and store informations 
+ * use $episodeT->getEpisode('ID') and $seriesT->getSerie("ID","LANG") to retreive and store informations 
  */
 $episodeT = Elios_Service_Thetvdb_Episodes();
 $episode = $episodeT->getEpisode('ID');
